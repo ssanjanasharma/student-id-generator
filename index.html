@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student ID Card Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Merriweather:wght@400;700&family=Nunito:wght@400;700;900&family=Press+Start+2P&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <main class="app-shell">
+    <section class="hero">
+      <p class="eyebrow" id="uiHeroEyebrow">✦ cute school tools ✦</p>
+      <h1 id="uiHeroTitle">Student ID Card Generator</h1>
+      <p id="uiHeroDescription">Create an aesthetic student ID card, preview it live, and download it as a PNG.</p>
+    </section>
+
+    <section class="workspace">
+      <!-- Controls panel -->
+      <form class="controls-panel" id="idForm">
+        <div class="lang-row">
+          <h2 id="uiCustomizeTitle">Customize your ID</h2>
+          <label class="lang-picker">
+            <select id="languageSelect">
+              <option value="en">🇺🇸 EN</option>
+              <option value="es">🇪🇸 ES</option>
+              <option value="ja">🇯🇵 JA</option>
+              <option value="ko">🇰🇷 KO</option>
+              <option value="zh">🇨🇳 ZH</option>
+              <option value="hi">🇮🇳 HI</option>
+            </select>
+          </label>
+        </div>
+
+        <label class="file-picker">
+          <span id="uiUploadPhoto">Upload profile photo</span>
+          <input type="file" id="photoInput" accept="image/*" />
+        </label>
+
+        <div class="grid two">
+          <label><span id="uiLabelName">Name</span>
+            <input type="text" id="studentName" placeholder="Sawako Kuronuma" maxlength="32" />
+          </label>
+          <label><span id="uiLabelNickname">Nickname optional</span>
+            <input type="text" id="nickname" placeholder="Sadako" maxlength="20" />
+          </label>
+          <label><span id="uiLabelBirthday">Birthday</span>
+            <input type="date" id="birthday" />
+          </label>
+          <label><span id="uiLabelSchool">School</span>
+            <input type="text" id="school" placeholder="Kitahoro High School" maxlength="36" />
+          </label>
+          <label><span id="uiLabelYear">Year level</span>
+            <input type="text" id="yearLevel" placeholder="Grade 10" maxlength="20" />
+          </label>
+          <label><span id="uiLabelMbti">MBTI Type</span>
+            <select id="mbti">
+              <option value="INFP">INFP (Healer)</option>
+              <option value="INFJ">INFJ (Counselor)</option>
+              <option value="INTJ">INTJ (Mastermind)</option>
+              <option value="INTP">INTP (Architect)</option>
+              <option value="ISFP">ISFP (Composer)</option>
+              <option value="ISFJ">ISFJ (Defender)</option>
+              <option value="ISTJ">ISTJ (Inspector)</option>
+              <option value="ISTP">ISTP (Craftsman)</option>
+              <option value="ENFP">ENFP (Champion)</option>
+              <option value="ENFJ">ENFJ (Teacher)</option>
+              <option value="ENTJ">ENTJ (Commander)</option>
+              <option value="ENTP">ENTP (Visionary)</option>
+              <option value="ESFP">ESFP (Performer)</option>
+              <option value="ESFJ">ESFJ (Provider)</option>
+              <option value="ESTJ">ESTJ (Supervisor)</option>
+              <option value="ESTP">ESTP (Dynamo)</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="grid two">
+          <label><span id="uiLabelTemplate">Template</span>
+            <select id="templateSelect">
+              <option value="classic">Classic Cutie</option>
+              <option value="kawaii">Kawaii Pop</option>
+              <option value="minimal">Soft Minimal</option>
+              <option value="space">Moon Club</option>
+            </select>
+          </label>
+
+          <label><span id="uiLabelTheme">Theme</span>
+            <select id="themeSelect">
+              <option value="pink">Pink</option>
+              <option value="blue">Blue</option>
+              <option value="lavender">Lavender</option>
+              <option value="green">Green</option>
+              <option value="yellow">Yellow</option>
+              <option value="mono">Black / White</option>
+            </select>
+          </label>
+
+          <label><span id="uiLabelFont">Font</span>
+            <select id="fontSelect">
+              <option value="rounded">Rounded</option>
+              <option value="serif">Serif</option>
+              <option value="pixel">Pixel</option>
+              <option value="handwritten">Handwritten</option>
+            </select>
+          </label>
+
+          <label><span id="uiLabelOrientation">Orientation</span>
+            <select id="orientationSelect">
+              <option value="horizontal">Horizontal</option>
+              <option value="vertical">Vertical</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="toggle-row">
+          <label class="checkbox-label">
+            <input type="checkbox" id="barcodeToggle" checked />
+            <span id="uiLabelShowBarcode">Show barcode</span>
+          </label>
+        </div>
+
+        <button type="button" class="download-btn" id="downloadBtn">Collect Your I'D Card</button>
+      </form>
+
+      <!-- Live preview panel -->
+      <section class="preview-panel">
+        <h2 id="uiPreviewTitle">Live preview</h2>
+
+        <div class="preview-stage">
+          <article class="id-card horizontal theme-pink template-classic font-rounded" id="idCard">
+            <div class="decor decor-one">✦</div>
+            <div class="decor decor-two">♡</div>
+            <div class="decor decor-three">☾</div>
+
+            <header class="card-header">
+              <span class="school-badge" id="schoolBadge">Kitahoro High School</span>
+              <h3 id="cardTitle">Student ID</h3>
+              <span class="tiny-icon">★</span>
+            </header>
+
+            <div class="card-body">
+              <aside class="photo-column">
+                <div class="photo-frame">
+                  <img id="photoPreview" src="sawakopfp.jpg" alt="Student profile preview" />
+                  <span class="photo-placeholder" id="photoPlaceholder">Upload<br>Photo</span>
+                </div>
+
+                <div class="barcode" id="barcode"></div>
+              </aside>
+
+              <div class="details-column">
+                <div class="divider"></div>
+                <p class="nickname-line" id="nicknameLine">Sadako</p>
+                <h4 id="previewName">Sawako Kuronuma</h4>
+
+                <dl class="details-list">
+                  <div>
+                    <dt id="cardLabelBirthday">Birthday</dt>
+                    <dd id="previewBirthday">Oct 31, 1993</dd>
+                  </div>
+                  <div>
+                    <dt id="cardLabelYear">Year</dt>
+                    <dd id="previewYear">Grade 10</dd>
+                  </div>
+                  <div>
+                    <dt id="cardLabelMbti">MBTI</dt>
+                    <dd id="previewMbti">INFJ</dd>
+                  </div>
+                  <div>
+                    <dt id="cardLabelSchool">School</dt>
+                    <dd id="previewSchool">Kitahoro High School</dd>
+                  </div>
+                </dl>
+              </div>
+            </div>
+            <footer class="card-footer">
+              <span id="cardFooterText">valid for good vibes</span>
+              <span class="dots">••••••••••</span>
+            </footer>
+          </article>
+        </div>
+
+        <footer class="preview-footer">
+          <span id="uiFooterCreatedBy">Created by</span> <a href="https://github.com/ssanjanasharma" target="_blank">sanjana</a>
+        </footer>
+      </section>
+    </section>
+  </main>
+
+  <!-- html2canvas exports the visible card to a PNG. Everything still runs client-side. -->
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
